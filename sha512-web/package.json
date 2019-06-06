@@ -1,10 +1,9 @@
 {
-  "name": "assemblyscript-webpack",
+  "name": "sha512-web",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "asbuild": "asc src/assembly/index.ts -b src/assembly/module.wasm -t src/assembly/module.wat -O3 --importMemory",
     "start": "npm run asbuild && webpack-dev-server --open",
     "start-docker": "npm run asbuild && webpack-dev-server --host 0.0.0.0",

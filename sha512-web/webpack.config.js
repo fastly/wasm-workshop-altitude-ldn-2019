@@ -6,7 +6,8 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist')
+        contentBase: path.resolve(__dirname, 'dist'),
+        watchContentBase: true
     },
     plugins: [
         new CleanWebpackPlugin(),

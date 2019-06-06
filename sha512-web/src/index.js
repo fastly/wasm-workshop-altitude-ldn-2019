@@ -3,8 +3,8 @@ import wasmModulePath from './assembly/module.wasm';
 
 const importObject = {
     env: {
-        abort: function(msg, file, line, column) {
-            console.error("abort at " + file + ":" + line + ":" + column + ": " + msg);
+        abort: function(_msg, _file, line, column) {
+            console.error("abort at " + line + ":" + column);
         },
         memory: new WebAssembly.Memory({ initial: 1})
     }

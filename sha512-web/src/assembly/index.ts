@@ -7,6 +7,6 @@ export function sha512(message: Uint8Array): string {
     return bin2hex(hash(message));
 }
 
-export function hello(): string {
-    return "hello";
+export function hello(): i32 {
+    return '👋'.codePointAt(0);
 }
