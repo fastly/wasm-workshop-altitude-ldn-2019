@@ -25,8 +25,12 @@ hashOutput.readOnly = true;
 async function updateHash() {
     return loadModule(wasmModulePath, importObject).then(instance => {
         const message = new TextEncoder().encode(messageInput.value);
-
-        hashOutput.value = String.fromCodePoint(instance.hello());
+        const messagePtr = instance.newArray(message);
+        
+        const hashStrPtr = instance.sha512(messagePtr);
+        instance.freeArray(messagePtr);
+        
+        hashOutput.value = instance.getString(hashStrPtr);
     });
 }
 
