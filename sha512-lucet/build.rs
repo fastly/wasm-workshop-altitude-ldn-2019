@@ -14,8 +14,12 @@ fn main() -> Result<(), Error> {
         .join("src")
         .join("assembly")
         .join("module.wasm");
+    println!("cargo:rerun-if-changed={}", wasm_path.display());
 
-    let bindings = Bindings::from_file(cargo_manifest_dir.join("bindings.json"))?;
+    let bindings_path = cargo_manifest_dir.join("bindings.json");
+    println!("cargo:rerun-if-changed={}", bindings_path.display());
+
+    let bindings = Bindings::from_file(&bindings_path)?;
 
     Lucetc::new(&wasm_path)
         .with_bindings(bindings)
