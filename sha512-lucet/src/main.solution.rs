@@ -2,7 +2,7 @@
 
 mod assemblyscript;
 
-use crate::assemblyscript::{get_string, put_byte_slice, GuestPtr};
+use crate::assemblyscript::{AssemblyScript, GuestPtr};
 use failure::Error;
 use lucet_runtime::{lucet_hostcalls, DlModule, Limits, MmapRegion, Region, Val};
 use std::io::{self, Read};
@@ -25,7 +25,7 @@ fn main() -> Result<(), Error> {
     let mut inst = region.new_instance(module)?;
 
     // put the message into the AssemblyScript heap
-    let message_ptr = put_byte_slice(&mut inst, message.as_slice());
+    let message_ptr = inst.put_byte_slice(&message);
 
     // run the hash function and get a pointer to the string with the hex digits
     let hash_str_ptr = inst
@@ -34,7 +34,7 @@ fn main() -> Result<(), Error> {
         .into();
 
     // get the string out of the AssemblyScript heap
-    let hash_str = get_string(&inst, hash_str_ptr);
+    let hash_str = inst.get_string(hash_str_ptr);
 
     println!("{}", hash_str);
 

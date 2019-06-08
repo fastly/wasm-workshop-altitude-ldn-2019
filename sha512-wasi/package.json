@@ -1,0 +1,16 @@
+{
+  "name": "sha512-wasi",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "asbuild": "asc assembly/index.ts -b dist/module.wasm -t dist/module.wat -O3 --importMemory",
+    "test": "asp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assemblyscript": "github:assemblyscript/assemblyscript#3ed76a97f05335504166fce1653da75f4face28f"
+  }
+}

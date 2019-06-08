@@ -2,7 +2,7 @@
 
 mod assemblyscript;
 
-use crate::assemblyscript::{get_string, put_byte_slice, GuestPtr};
+use crate::assemblyscript::{AssemblyScript, GuestPtr};
 use failure::Error;
 use lucet_runtime::{lucet_hostcalls, DlModule, Limits, MmapRegion, Region, Val};
 use std::io::{self, Read};

@@ -17,22 +17,23 @@ async function loadModule(path, importObject) {
     );
 }
 
-const messageInput = document.getElementById('inputString');
+const msgInput = document.getElementById('inputString');
 
 const hashOutput = document.getElementById('outputHash');
 hashOutput.readOnly = true;
 
 async function updateHash() {
     return loadModule(wasmModulePath, importObject).then(instance => {
-        const message = new TextEncoder().encode(messageInput.value);
-        const messagePtr = instance.newArray(message);
+        const msg = new TextEncoder().encode(msgInput.value);
+        const msgPtr = instance.newArray(msg);
         
-        const hashStrPtr = instance.sha512(messagePtr);
-        instance.freeArray(messagePtr);
+        const hashStrPtr = instance.sha512(msgPtr);
         
-        hashOutput.value = instance.getString(hashStrPtr);
+        const hashStr = instance.getString(hashStrPtr);
+
+        hashOutput.value = hashStr;
     });
 }
 
-messageInput.addEventListener("input", updateHash);
+msgInput.addEventListener("input", updateHash);
 updateHash();
