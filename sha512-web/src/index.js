@@ -17,14 +17,14 @@ async function loadModule(path, importObject) {
     );
 }
 
-const messageInput = document.getElementById('inputString');
+const msgInput = document.getElementById('inputString');
 
 const hashOutput = document.getElementById('outputHash');
 hashOutput.readOnly = true;
 
 async function updateHash() {
     return loadModule(wasmModulePath, importObject).then(instance => {
-        const message = new TextEncoder().encode(messageInput.value);
+        const msg = new TextEncoder().encode(msgInput.value);
 
         hashOutput.value = String.fromCodePoint(instance.hello());
     });
