@@ -10,8 +10,8 @@ use std::path::PathBuf;
 
 fn main() -> Result<(), Error> {
     // read stdin until EOF and store the bytes in `message`
-    let mut message: Vec<u8> = vec![];
-    io::stdin().read_to_end(&mut message)?;
+    let mut msg: Vec<u8> = vec![];
+    io::stdin().read_to_end(&mut msg)?;
 
     // load the Lucet module compiled with `build.rs`
     let module_path = PathBuf::from(env!("OUT_DIR")).join("module.so");
@@ -25,11 +25,11 @@ fn main() -> Result<(), Error> {
     let mut inst = region.new_instance(module)?;
 
     // put the message into the AssemblyScript heap
-    let message_ptr = inst.put_byte_slice(&message);
+    let msg_ptr = inst.put_byte_slice(&msg);
 
     // run the hash function and get a pointer to the string with the hex digits
     let hash_str_ptr = inst
-        .run("sha512", &[Val::GuestPtr(message_ptr)])
+        .run("sha512", &[Val::GuestPtr(msg_ptr)])
         .unwrap()
         .into();
 

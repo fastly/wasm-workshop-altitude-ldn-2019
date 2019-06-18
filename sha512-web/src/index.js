@@ -30,5 +30,5 @@ async function updateHash() {
     });
 }
 
-messageInput.addEventListener("input", updateHash);
+msgInput.addEventListener("input", updateHash);
 updateHash();

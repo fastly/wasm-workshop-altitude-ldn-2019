@@ -1,3 +1,6 @@
 [submodule "lib/wasm-crypto"]
 	path = lib/wasm-crypto
 	url = https://github.com/jedisct1/wasm-crypto.git
+[submodule "lib/lucet"]
+	path = lib/lucet
+	url = https://github.com/fastly/lucet.git

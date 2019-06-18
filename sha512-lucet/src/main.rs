@@ -10,8 +10,8 @@ use std::path::PathBuf;
 
 fn main() -> Result<(), Error> {
     // read stdin until EOF and store the bytes in `message`
-    let mut message: Vec<u8> = vec![];
-    io::stdin().read_to_end(&mut message)?;
+    let mut msg: Vec<u8> = vec![];
+    io::stdin().read_to_end(&mut msg)?;
 
     // load the Lucet module compiled with `build.rs`
     let module_path = PathBuf::from(env!("OUT_DIR")).join("module.so");
