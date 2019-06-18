@@ -1,8 +1,10 @@
 # WebAssembly outside the web
 
-TODO: Abstract
-
 Workshop presented at Altitude London 2019.
+
+WebAssembly is a W3C standard for compiling languages like C, C++, and Rust into modules that can run in web browsers at near-native speed. In order to safely run untrusted code in browsers, WebAssembly was designed from the start to be memory-safe and sandboxed, as well as to only use resources explicitly provided by the runtime environment. In this workshop, we'll see how Fastly's open-source Lucet project can provide similar benefits for server-side applications.
+
+After introducing the core principles of WebAssembly, we'll build an application that uses WebAssembly to cryptographically hash messages in the browser. Then, we'll use the same WebAssembly cryptography module in a server-like command-line environment using Lucet and the POSIX-like WebAssembly System Interface (WASI). We'll show both how the WebAssembly module is implemented using AssemblyScript (a dialect of TypeScript), and how that module fits into usual client- and server-side development workflows.
 
 ## SHA512 Examples
 
